@@ -1,0 +1,120 @@
+/* General Styles */
+body {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+h1, h2, h3 {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* Scores Page Styles */
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.court {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-basis: calc(30% - 40px); /* Responsive size */
+}
+
+.court:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Match Info */
+.match-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 10px;
+}
+
+.team {
+    flex: 1;
+    padding: 10px;
+}
+
+.vs {
+    font-size: 2rem;
+    color: #ffeb3b; /* Yellow color for contrast */
+}
+
+/* Score */
+.score {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #4caf50; /* Green color for scores */
+    animation: pulse 1s infinite alternate;
+}
+
+/* Button Styles */
+button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .court {
+        flex-basis: calc(45% - 40px); /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .court {
+        flex-basis: 100%; /* Stack on smaller screens */
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+}
