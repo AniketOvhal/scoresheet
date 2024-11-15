@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="60">
+    <title>Current Match Scores</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+
+        h1 {
+            color: #00796b;
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 400px;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        li {
+            background-color: #ffffff;
+            border: 2px solid #00796b;
+            border-radius: 10px;
+            margin: 15px 0;
+            padding: 20px;
+            font-size: 1.5em;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        li:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        small {
+            display: block;
+            color: #555;
+            font-size: 1em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 3em;
+            }
+
+            li {
+                font-size: 1.2em;
+                padding: 15px;
+                /* Reduced padding for smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Current Match Scores-OFDR</h1>
+    <ul>
+        <% scores.forEach(score=> { %>
+            <li>
+                <%= score.court %>: <%= score.teamA %> vs <%= score.teamB %> - <%= score.scoreA %> : <%= score.scoreB %>
+                                    <br>
+                                    <small>Last Updated: <%= new Date(score.updatedAt).toLocaleString() %></small>
+            </li>
+            <% }) %>
+    </ul>
+</body>
+
+</html>

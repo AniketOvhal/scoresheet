@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Scores</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+
+        h1 {
+            color: #00796b;
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s;
+        }
+
+        form {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        select,
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: calc(100% - 20px);
+            border-radius: 5px;
+            border: 2px solid #00796b;
+            font-size: 1.2em;
+            transition: border-color 0.3s;
+        }
+
+        select:focus,
+        input:focus {
+            border-color: #004d40;
+            outline: none;
+        }
+
+        button {
+            background-color: #00796b;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        h2 {
+            color: #00796b;
+            font-size: 3em;
+            margin-top: 40px;
+            animation: fadeIn 1s;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 400px;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        li {
+            background-color: #ffffff;
+            border: 2px solid #00796b;
+            border-radius: 10px;
+            margin: 15px 0;
+            padding: 20px;
+            font-size: 1.5em;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        li:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        small {
+            display: block;
+            color: #555;
+            font-size: 1em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 3em;
+            }
+
+            form {
+                padding: 15px;
+            }
+
+            button {
+                font-size: 1.2em;
+            }
+
+            h2 {
+                font-size: 2.5em;
+            }
+
+            li {
+                font-size: 1.2em;
+                padding: 15px;
+                /* Reduced padding for smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Update Scores</h1>
+    <form action="/update-score" method="POST">
+        <select name="court" required>
+            <option value="">Select Court</option>
+            <option value="Lawn Tennis Court">Lawn Tennis Court</option>
+            <option value="Badminton Court at Senior Club">Badminton Court at Senior Club</option>
+            <option value="Badminton Court at Community Hall">Badminton Court at Community Hall</option>
+        </select>
+        <input type="text" name="teamA" placeholder="Team A" required>
+        <input type="text" name="teamB" placeholder="Team B" required>
+        <input type="number" name="scoreA" placeholder="Score A" required>
+        <input type="number" name="scoreB" placeholder="Score B" required>
+        <button type="submit">Update Score</button>
+    </form>
+    <h2>Current Scores</h2>
+    <ul>
+        <% scores.forEach(score=> { %>
+            <li>
+                <%= score.court %>: <%= score.teamA %> vs <%= score.teamB %> - <%= score.scoreA %> : <%= score.scoreB %>
+                                    <br>
+                                    <small>Last Updated: <%= new Date(score.updatedAt).toLocaleString() %></small>
+            </li>
+            <% }) %>
+    </ul>
+</body>
+
+</html>
